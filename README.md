@@ -52,7 +52,7 @@ Warning!!! It contains lots of bugs:
 
 ## Dependencies
 
-- [ClaudeCodeSDK.jl](https://github.com/AtelierArith/ClaudeCodeSDK): Core integration with Claude Code
+- [ClaudeCodeSDK.jl](https://github.com/AtelierArith/ClaudeCodeSDK.jl): Core integration with Claude Code
 - JSON3.jl: JSON handling
 - REPL: Julia REPL system integration
 
