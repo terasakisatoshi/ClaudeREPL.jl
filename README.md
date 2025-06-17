@@ -29,29 +29,22 @@ using ClaudeREPL
 2. The Claude REPL mode is automatically initialized. Enter Claude mode by pressing `c` at the beginning of a line:
 ```
 julia> c
-claude> Hello, can you help me with Julia?
+claude> solve 3x + 4 = 5
+3x + 4 = 5
+3x = 1
+x = 1/3
+claude>
 ```
 
 3. Exit Claude mode by pressing backspace at an empty prompt or typing `exit`.
 
 ### Special Commands
 
+Warning!!! It contains lots of bugs:
+
 - `help`: Display help message
 - `clear`: Clear conversation history
 - `exit`: Exit Claude mode
-
-### Manual Mode Switching
-
-```julia
-# Switch to Claude mode programmatically
-claude_mode!()
-
-# Clear conversation history
-clear_conversation_history!()
-
-# Get conversation statistics
-print_conversation_stats()
-```
 
 ## Requirements
 
@@ -72,30 +65,6 @@ The package consists of three main components:
 - **ClaudeREPL.jl**: Main module with exports and initialization
 - **repl.jl**: REPL mode implementation with key bindings and prompt handling
 - **claude.jl**: Claude AI communication layer with conversation management
-
-## Configuration
-
-The package uses the following default settings:
-
-- Maximum conversation history: 100 messages
-- Maximum input length: 10,000 characters
-- Automatic history trimming to prevent memory leaks
-
-## Error Handling
-
-The package handles various error conditions:
-
-- **ClaudeSDKError**: General SDK-related errors
-- **CLIConnectionError**: Claude CLI connection issues
-- **CLINotFoundError**: Missing Claude CLI installation
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
 
 ## Testing
 
