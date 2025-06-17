@@ -5,10 +5,7 @@ A Julia REPL mode for interacting with Claude AI directly from the Julia REPL. P
 ## Features
 
 - **Seamless REPL Integration**: Press `c` to enter Claude mode, backspace to exit
-- **Conversation History**: Maintains context across interactions with automatic memory management
-- **Error Handling**: Robust error handling for network issues and API errors
-- **Rate Limiting**: Built-in protection against API abuse
-- **Memory Management**: Automatic conversation history trimming to prevent memory leaks
+Warning!!! It contains lots of bugs:
 
 ## Installation
 
