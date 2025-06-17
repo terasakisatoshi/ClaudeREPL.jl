@@ -13,8 +13,9 @@ A Julia REPL mode for interacting with Claude AI directly from the Julia REPL. P
 ## Installation
 
 ```julia
-using Pkg
-Pkg.add("ClaudeREPL")
+git clone https://github.com/terasakisatoshi/ClaudeREPL.jl.git
+cd ClaudeREPL.jl
+julia --project -e 'using Pkg; Pkg.instantiate()'
 ```
 
 ## Usage
