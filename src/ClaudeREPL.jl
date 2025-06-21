@@ -6,9 +6,7 @@ Provides secure, rate-limited communication with proper error handling and memor
 """
 module ClaudeREPL
 
-using REPL
-using REPL.LineEdit
-using REPL.REPLCompletions
+using ReplMaker
 using ClaudeCodeSDK
 using JSON3
 

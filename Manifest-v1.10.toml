@@ -2,7 +2,7 @@
 
 julia_version = "1.10.9"
 manifest_format = "2.0"
-project_hash = "cfa9f61cde4a9ff9632434b0d0109d86b1b34171"
+project_hash = "7dfd6ef45d8aed191e85da467ec4e3625f944781"
 
 [[deps.Artifacts]]
 uuid = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
@@ -17,9 +17,9 @@ version = "0.1.9"
 
 [[deps.ClaudeCodeSDK]]
 deps = ["HTTP", "JSON"]
-git-tree-sha1 = "dd51b436c1d459fa06a1d11b9545acade7f7ef8e"
+git-tree-sha1 = "9d12e89abc2526d6a8f0fea20893d7f6be9de2bc"
 repo-rev = "main"
-repo-url = "https://github.com/AtelierArith/ClaudeCodeSDK.jl.git"
+repo-url = "https://github.com/AtelierArith/ClaudeCodeSDK.jl"
 uuid = "38ea0fac-78ee-46bd-bc10-f52e7269b833"
 version = "0.1.0"
 
@@ -47,9 +47,9 @@ version = "0.1.11"
 
 [[deps.HTTP]]
 deps = ["Base64", "CodecZlib", "ConcurrentUtilities", "Dates", "ExceptionUnwrapping", "Logging", "LoggingExtras", "MbedTLS", "NetworkOptions", "OpenSSL", "PrecompileTools", "Random", "SimpleBufferStream", "Sockets", "URIs", "UUIDs"]
-git-tree-sha1 = "f93655dc73d7a0b4a368e3c0bce296ae035ad76e"
+git-tree-sha1 = "ed5e9c58612c4e081aecdb6e1a479e18462e041e"
 uuid = "cd3eb016-35fb-5094-929b-558a96fad6f3"
-version = "1.10.16"
+version = "1.10.17"
 
 [[deps.InteractiveUtils]]
 deps = ["Markdown"]
@@ -159,6 +159,12 @@ uuid = "3fa0cd96-eef1-5676-8a61-b3b8758bbffb"
 deps = ["SHA"]
 uuid = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
 
+[[deps.ReplMaker]]
+deps = ["REPL", "Unicode"]
+git-tree-sha1 = "f8bb680b97ee232c4c6591e213adc9c1e4ba0349"
+uuid = "b873ce64-0db9-51f5-a568-4457d8e49576"
+version = "0.2.7"
+
 [[deps.SHA]]
 uuid = "ea8e919c-243c-51af-8825-aaa63cd721ce"
 version = "0.7.0"
@@ -195,9 +201,9 @@ uuid = "3bb67fe8-82b1-5028-8e26-92a6c54297fa"
 version = "0.11.3"
 
 [[deps.URIs]]
-git-tree-sha1 = "cbbebadbcc76c5ca1cc4b4f3b0614b3e603b5000"
+git-tree-sha1 = "24c1c558881564e2217dcf7840a8b2e10caeb0f9"
 uuid = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
-version = "1.5.2"
+version = "1.6.0"
 
 [[deps.UUIDs]]
 deps = ["Random", "SHA"]
