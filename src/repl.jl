@@ -96,14 +96,14 @@ function claude_repl_init()
         main_mode = repl.interface.modes[1]
 
         claude_keymap = Dict{Any,Any}(
-            'c' => function (s, args...)
+            ')' => function (s, args...)
                 if isempty(s) || position(LineEdit.buffer(s)) == 0
                     buf = copy(LineEdit.buffer(s))
                     LineEdit.transition(s, claude_mode) do
                         LineEdit.state(s, claude_mode).input_buffer = buf
                     end
                 else
-                    LineEdit.edit_insert(s, 'c')
+                    LineEdit.edit_insert(s, ')')
                 end
             end
         )
@@ -128,7 +128,7 @@ function claude_repl_init()
         ))
     end
 
-    println("Claude REPL mode initialized. Press 'c' to enter and backspace to exit.")
+    println("Claude REPL mode initialized. Press ')' to enter and backspace to exit.")
     return claude_mode
 end
 

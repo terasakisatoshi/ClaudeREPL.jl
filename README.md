@@ -6,7 +6,7 @@ ClaudeREPL.jl brings Claude AI directly into your Julia workflow. Chat with Clau
 
 ## ✨ Features
 
-- 🚀 **One-key access**: Press `c` to instantly enter Claude mode
+- 🚀 **One-key access**: Press `)` to instantly enter Claude mode
 - 📚 **Persistent history**: Navigate previous conversations with arrow keys across Julia sessions
 - 🎨 **Rich formatting**: Markdown rendering for code blocks, lists, and formatting
 - 🔄 **Seamless integration**: Native Julia REPL experience with automatic initialization
@@ -38,9 +38,9 @@ julia --project -e 'using Pkg; Pkg.instantiate()'
 
 ```julia
 julia> using ClaudeREPL
-Claude REPL mode initialized. Press 'c' to enter and backspace to exit.
+Claude REPL mode initialized. Press ')' to enter and backspace to exit.
 
-julia> c
+julia> )
 claude> What's the difference between map and broadcast in Julia?
 
 # Claude responds with detailed explanation...
@@ -57,7 +57,7 @@ claude> Can you show me an example of metaprogramming?
 
 **Method 1: Quick key** (recommended)
 ```julia
-julia> c    # Press 'c' at the start of any line
+julia> )    # Press ')' at the start of any line
 claude> 
 ```
 
