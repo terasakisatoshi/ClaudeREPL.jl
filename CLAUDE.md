@@ -44,7 +44,7 @@ The package has three main components:
 ## REPL Mode Details
 
 - Mode prompt: "claude> "
-- Entry: Press 'c' at beginning of any Julia prompt
+- Entry: Press Ctrl-g from any Julia prompt
 - Exit handled automatically by ReplMaker.jl (backspace or special commands)
 - The mode initializes via `initrepl()` call in `__init__()` when the package is loaded
 - ReplMaker.jl handles all the complex REPL internals automatically
