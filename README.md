@@ -4,8 +4,11 @@ A Julia REPL mode for interacting with Claude AI directly from the Julia REPL. P
 
 ## Features
 
-- **Seamless REPL Integration**: Press `c` to enter Claude mode, backspace to exit
-Warning!!! It contains lots of bugs:
+- **Seamless REPL Integration**: Press `Ctrl-g` to enter Claude mode, backspace to exit
+- **Simplified Implementation**: Built on ReplMaker.jl for reliable REPL mode creation
+- **Special Commands**: Built-in help, clear, and exit commands
+- **Conversation Management**: Automatic history management with size limits
+- **Error Handling**: Robust error handling for SDK and connection issues
 
 ## Installation
 
@@ -24,9 +27,9 @@ julia --project -e 'using Pkg; Pkg.instantiate()'
 using ClaudeREPL
 ```
 
-2. The Claude REPL mode is automatically initialized. Enter Claude mode by pressing `c` at the beginning of a line:
+2. The Claude REPL mode is automatically initialized. Enter Claude mode by pressing `Ctrl-g`:
 ```
-julia> c
+julia> [Ctrl-g]
 claude> solve 3x + 4 = 5
 3x + 4 = 5
 3x = 1
@@ -38,10 +41,8 @@ claude>
 
 ### Special Commands
 
-Warning!!! It contains lots of bugs:
-
 - `help`: Display help message
-- `clear`: Clear conversation history
+- `clear`: Clear conversation history  
 - `exit`: Exit Claude mode
 
 ## Requirements
@@ -53,6 +54,7 @@ Warning!!! It contains lots of bugs:
 ## Dependencies
 
 - [ClaudeCodeSDK.jl](https://github.com/AtelierArith/ClaudeCodeSDK.jl): Core integration with Claude Code
+- [ReplMaker.jl](https://github.com/MasonProtter/ReplMaker.jl): Simplified REPL mode creation
 - JSON3.jl: JSON handling
 - REPL: Julia REPL system integration
 
@@ -61,8 +63,8 @@ Warning!!! It contains lots of bugs:
 The package consists of three main components:
 
 - **ClaudeREPL.jl**: Main module with exports and initialization
-- **repl.jl**: REPL mode implementation with key bindings and prompt handling
-- **claude.jl**: Claude AI communication layer with conversation management
+- **repl.jl**: REPL mode implementation using ReplMaker.jl with input parsing and special commands
+- **claude.jl**: Claude AI communication layer with conversation management and error handling
 
 ## Testing
 

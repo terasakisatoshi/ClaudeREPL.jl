@@ -51,7 +51,7 @@ end
     claude_repl_init()
 
 Initializes the Claude REPL mode using ReplMaker.
-Press 'c' at the beginning of a line to enter Claude mode.
+Press Ctrl-g to enter Claude mode.
 """
 function claude_repl_init()
     try
@@ -59,7 +59,7 @@ function claude_repl_init()
             claude_repl_parser,
             prompt_text = "claude> ",
             prompt_color = :blue,
-            start_key = 'c',
+            start_key = "\\C-g",
             mode_name = "claude_mode"
         )
     catch e
@@ -74,5 +74,5 @@ Manually switch to claude mode (alias for compatibility).
 Note: With ReplMaker, mode switching is handled automatically.
 """
 function claude_mode!()
-    @info "Claude REPL mode is available. Press 'c' at the beginning of a line to enter Claude mode."
+    @info "Claude REPL mode is available. Press Ctrl-g to enter Claude mode."
 end
