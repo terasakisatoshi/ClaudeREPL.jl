@@ -11,6 +11,8 @@ using REPL.LineEdit
 using ClaudeCodeSDK
 using Markdown
 
+export claude_repl_init, claude_mode!, send_to_claude
+
 include("repl.jl")
 include("claude.jl")
 
