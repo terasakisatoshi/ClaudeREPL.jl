@@ -1,155 +1,175 @@
 # ClaudeREPL.jl
 
-A Julia REPL mode for interacting with Claude AI directly from the Julia REPL using ClaudeCodeSDK.
+> A seamless Claude AI integration for the Julia REPL
 
-## Features
+ClaudeREPL.jl brings Claude AI directly into your Julia workflow. Chat with Claude without leaving your REPL environment, complete with persistent history and rich markdown formatting.
 
-- **Seamless REPL Integration**: Press `c` to enter Claude mode, backspace to exit
-- **Native REPL Implementation**: Uses Julia's built-in REPL system for stability
-- **Automatic Initialization**: Claude mode is set up automatically when the package loads
-- **Simple Commands**: Built-in help, clear, and exit commands
-- **Error Handling**: Proper error handling for Claude API interactions
+## ✨ Features
 
-## Prerequisites
+- 🚀 **One-key access**: Press `c` to instantly enter Claude mode
+- 📚 **Persistent history**: Navigate previous conversations with arrow keys across Julia sessions
+- 🎨 **Rich formatting**: Markdown rendering for code blocks, lists, and formatting
+- 🔄 **Seamless integration**: Native Julia REPL experience with automatic initialization
+- 🛡️ **Robust error handling**: Graceful handling of network issues and API errors
+- ⚡ **Streaming responses**: Real-time response display as Claude types
 
-Before using ClaudeREPL.jl, you need:
+## 🚀 Quick Start
 
-1. **Claude Code CLI**: Install and configure the Claude Code CLI
-   - Follow the installation guide at [Claude Code documentation](https://docs.anthropic.com/en/docs/claude-code)
-   - Ensure the CLI is authenticated and working
+### Prerequisites
 
-2. **ClaudeCodeSDK.jl**: This package depends on ClaudeCodeSDK.jl for Claude integration
+You'll need the Claude Code CLI installed and authenticated:
 
-## Installation
+```bash
+# Install Claude Code CLI (see https://docs.anthropic.com/en/docs/claude-code)
+# Then authenticate
+claude auth login
+```
+
+### Installation
 
 ```julia
+# Clone and install
 git clone https://github.com/terasakisatoshi/ClaudeREPL.jl.git
 cd ClaudeREPL.jl
 julia --project -e 'using Pkg; Pkg.instantiate()'
 ```
 
-## Usage
-
 ### Basic Usage
 
-1. Start Julia and load the package:
 ```julia
 julia> using ClaudeREPL
 Claude REPL mode initialized. Press 'c' to enter and backspace to exit.
-```
 
-2. Enter Claude mode by pressing `c` at the beginning of a line:
-```julia
 julia> c
-claude> What is the capital of France?
-The capital of France is Paris.
+claude> What's the difference between map and broadcast in Julia?
 
-claude> How do I create a vector in Julia?
-You can create a vector in Julia in several ways:
-- Using square brackets: [1, 2, 3, 4]
-- Using the Vector constructor: Vector{Int}([1, 2, 3, 4])
-- Using collect(): collect(1:4)
+# Claude responds with detailed explanation...
 
-claude>
+claude> Can you show me an example of metaprogramming?
+
+# Use ↑ arrow to navigate back to previous questions
+# Press backspace on empty line to return to Julia REPL
 ```
 
-3. Exit Claude mode by pressing backspace at an empty prompt or typing `exit`:
+## 📖 How to Use
+
+### Entering Claude Mode
+
+**Method 1: Quick key** (recommended)
 ```julia
-claude> [backspace]
-julia>
+julia> c    # Press 'c' at the start of any line
+claude> 
 ```
 
-### Special Commands
-
-Within Claude mode, you can use these special commands:
-
-- `help`: Display help message with available commands
-- `exit`: Exit Claude mode and return to Julia
-
-Example:
-```julia
-claude> help
-Claude REPL Mode Help:
-- Type your question or request to Claude
-- Use backspace to exit Claude mode and return to Julia
-- Type 'help' for this help message
-- Type 'exit' to exit Claude mode
-
-claude> clear
-Conversation history cleared.
-
-claude> exit
-julia>
-```
-
-### Manual Mode Switching
-
-You can also manually switch to Claude mode using:
+**Method 2: Function call**
 ```julia
 julia> claude_mode!()
-claude>
+claude> 
 ```
 
-## Requirements
+### Navigation and History
 
-- Julia 1.10+
-- ClaudeCodeSDK 0.1.0+
-- Active Claude Code CLI installation and authentication
+- **↑/↓ Arrow keys**: Navigate through command history
+- **Ctrl+P/Ctrl+N**: Alternative history navigation
+- **Backspace** (on empty line): Exit to Julia REPL
+- **Type `exit`**: Exit to Julia REPL
+- **Type `help`**: Show help message
 
-## Dependencies
+### History Features
 
-- [ClaudeCodeSDK.jl](https://github.com/AtelierArith/ClaudeCodeSDK.jl): Core integration with Claude Code CLI
-- REPL: Julia's built-in REPL system
+Your conversations are automatically saved and restored:
 
-## Architecture
+- **Persistent storage**: History saved to `DEPOT_PATH[1]/config/claude_repl_history.txt`
+- **Cross-session**: Access previous conversations after restarting Julia
+- **Smart deduplication**: Consecutive identical commands are filtered out
+- **Reasonable limits**: Keeps last 100 commands for optimal performance
 
-The package is structured into three main components:
+## 🛠️ Configuration
 
-### Core Module (`src/ClaudeREPL.jl`)
-- Main module definition with automatic initialization
-- Exports key functions: `claude_repl_init`, `claude_mode!`, `send_to_claude`, `clear_conversation_history!`
-- Handles package loading and REPL setup
+### History File Location
 
-### REPL Integration (`src/repl.jl`)
-- Native Julia REPL mode implementation
-- Key binding setup ('c' to enter, backspace to exit)
-- Command handling and user interface
-- Stable integration without external dependencies
-
-### Claude Communication (`src/claude.jl`)
-- Interface to ClaudeCodeSDK for AI interactions
-- Error handling for API communication
-- Response processing and formatting
-
-## Troubleshooting
-
-### Common Issues
-
-1. **"Claude CLI not found" error**: Ensure Claude Code CLI is installed and in your PATH
-2. **Authentication errors**: Run `claude auth login` to authenticate the CLI
-3. **Mode not initialized**: The package automatically initializes on load, but you can manually call `claude_repl_init()` if needed
+History is stored in your Julia depot:
+```julia
+# Check your history file location
+julia> using ClaudeREPL
+julia> println(ClaudeREPL.CLAUDE_HISTORY_FILE)
+```
 
 ### Manual Initialization
 
-If automatic initialization fails, you can manually set up the REPL mode:
+If auto-initialization fails:
 ```julia
 julia> claude_repl_init()
 ```
 
-## Testing
+## 🔧 Troubleshooting
+
+### Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| `Claude CLI not found` | Install Claude Code CLI and ensure it's in PATH |
+| Authentication errors | Run `claude auth login` |
+| History not working | Check write permissions for `DEPOT_PATH[1]/config/` |
+| Arrow keys not working | Ensure you're in Claude mode (`claude>` prompt) |
+| Responses not displaying | Check Claude CLI connection with `claude --version` |
+
+### Getting Help
+
+```julia
+claude> help
+```
+
+Shows available commands and keyboard shortcuts.
+
+## 🏗️ Architecture
+
+ClaudeREPL.jl consists of three main components:
+
+### Core Module (`src/ClaudeREPL.jl`)
+- Package exports and automatic initialization
+- Integration with Julia's module system
+
+### REPL Integration (`src/repl.jl`)
+- Custom REPL mode with native Julia integration
+- Manual history system with persistent storage
+- Key binding management and safe error handling
+
+### Claude Communication (`src/claude.jl`)
+- Streaming interface to ClaudeCodeSDK
+- Markdown response processing and display
+- Robust error handling for API communication
+
+## 🧪 Development
+
+### Running Tests
 
 ```bash
 julia --project=. -e "using Pkg; Pkg.test()"
 ```
 
-## Contributing
+### Dependencies
 
-Contributions are welcome! Please feel free to submit issues and pull requests.
+- **Julia**: 1.10+
+- **[ClaudeCodeSDK.jl](https://github.com/AtelierArith/ClaudeCodeSDK.jl)**: Core Claude integration
+- **Standard Library**: REPL, Markdown
 
-## License
+## 🤝 Contributing
 
-This project is licensed under the MIT License.
+Contributions are welcome! Feel free to:
+- Report bugs and request features via [GitHub Issues](https://github.com/terasakisatoshi/ClaudeREPL.jl/issues)
+- Submit pull requests for improvements
+- Share usage examples and workflows
 
-## Authors
+## 📄 License
 
-- Claude Code and Satoshi Terasaki
+MIT License - see LICENSE file for details.
+
+## 👥 Authors
+
+- [Satoshi Terasaki](https://github.com/terasakisatoshi)
+- Claude Code
+
+---
+
+*Built with ❤️ for the Julia community*
