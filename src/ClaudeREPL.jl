@@ -8,11 +8,8 @@ module ClaudeREPL
 
 using REPL
 using REPL.LineEdit
-using REPL.REPLCompletions
 using ClaudeCodeSDK
-using JSON3
-
-export claude_repl_init, claude_mode!, send_to_claude, clear_conversation_history!, print_conversation_stats
+using Markdown
 
 include("repl.jl")
 include("claude.jl")
