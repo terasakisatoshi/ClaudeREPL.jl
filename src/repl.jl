@@ -122,9 +122,6 @@ function claude_repl_init()
             # Add history navigation with up/down arrows
             "\e[A" => (s, o...) -> safe_history_prev(s, claude_mode),
             "\e[B" => (s, o...) -> safe_history_next(s, claude_mode),
-            # Also bind Ctrl+P and Ctrl+N for history navigation (common alternatives)
-            "^P" => (s, o...) -> safe_history_prev(s, claude_mode),
-            "^N" => (s, o...) -> safe_history_next(s, claude_mode)
         ))
     end
 
